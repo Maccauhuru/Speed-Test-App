@@ -13,8 +13,8 @@ const addLeadingZero=(time)=>{
 }
 
 // Run a standard minute/second/hundredths timer:
-function runtimer() {
-let currentTimer   = addLeadingZero(timer[0]) +':'+addLeadingZero(timer[1])+':'+addLeadingZero(timer[2])
+const runtimer=()=>{
+let currentTimer   = addLeadingZero(timer[0]) +':'+addLeadingZero(timer[1])+':'+addLeadingZero(timer[2]);
 theTimer.innerHTML = currentTimer;
 timer[3]++;
 
@@ -24,9 +24,8 @@ timer[1] = Math.floor((timer[3] / 100) - (timer[0] * 60));
 timer[2] = Math.floor((timer[3] - (timer[1] * 100)) - (timer[0] * 6000));
 }
 
-
 // Match the text entered with the provided text on the page:
-function spellCheck(){
+const spellCheck =()=>{
 let textEntered = testArea.value;
 let originTextMatch = originText.substr(0,textEntered.length);
 if(textEntered == originText){
@@ -43,7 +42,7 @@ testWrapper.style.borderColor = "#7FFF00";
 }
 
 // Start the timer:
-function startTimer(){
+const startTimer =()=>{
 let totalTextLength = testArea.value.length + 1;
 if(totalTextLength===1 && !runningTimer){
     runningTimer = true;
@@ -51,14 +50,12 @@ if(totalTextLength===1 && !runningTimer){
 }
 }
 
-
 // Reset everything:
-function reset(){
+const reset=()=>{
     //visual 
     testArea.value = '';
     runningTimer = false;
     testWrapper.style.borderColor = "grey";
-
 
     //background
     timer = [0,0,0,0];
@@ -66,7 +63,6 @@ function reset(){
     interval = null;
     theTimer.innerHTML = '00:00:00';
 }
-
 // Event listeners for keyboard input and the reset button:
 testArea.addEventListener("keypress",startTimer,false);
 testArea.addEventListener("keyup",spellCheck,false);
